@@ -6,6 +6,44 @@ import java.util.Queue;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
+    public static void countJavaBook(List<Book> bookList){
+        int count = 0;
+        for (Book b:bookList){
+            if(b instanceof ProgrammingBook && ((ProgrammingBook)b).getLanguage().equals("java")){
+                count ++;
+            }
+        }
+        System.out.println("so sách ngôn ngữ java = " + count);
+    }
+
+    public static void countVientuong1(List<Book> bookList){
+        int count = 0;
+        for (Book b:bookList){
+            if (b instanceof FictionBook && ((FictionBook)b).getCategoty().equals("vientuong1")){
+                count++;
+            }
+        }
+        System.out.println("so sach vien tuong 1: " + count);
+    }
+
+    public static void countSumBook(List<Book> bookList){
+        int sumPrice = 0;
+        for (Book b:bookList){
+            sumPrice += b.getPrice();
+        }
+        System.out.println("tổng tiền 6 cún: " + sumPrice);
+    }
+
+    public static void countBookless(List<Book> bookList){
+        int sumbook = 0;
+        for (Book b:bookList){
+            if (b.getPrice() < 100){
+                sumbook++;
+            }
+        }
+        System.out.println("so sách tien it hon 100: " + sumbook);
+    }
+
     public static void main(String[] args) {
         List<Book> bookList = new ArrayList<>();
         Book pb1 = new ProgrammingBook("PB","alo",100,"ti","java","basic");
@@ -23,12 +61,9 @@ public class Main {
         bookList.add(fb2);
         bookList.add(fb3);
 
-        int count = 0;
-        for (Book b:bookList){
-            if(b instanceof ProgrammingBook && ((ProgrammingBook)b).getLanguage().equals("java")){
-                count ++;
-            }
-        }
-        System.out.println("so sách ngôn ngữ java = " + count);
+        countJavaBook(bookList);
+        countSumBook(bookList);
+        countBookless(bookList);
+        countVientuong1(bookList);
     }
 }
